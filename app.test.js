@@ -30,7 +30,7 @@ function enviarNotificacionAutor(error) {
 const app = require('./dist/app');
 
 test("TEST", () => {
-  if ((app.square(8) !== 64) && (app.square(3) !== 9) ) {
+  if ((app.square(8) !== 64) || (app.square(3) !== 9) ) {
     // Envía una notificación por correo electrónico al autor cuando falle el test
     enviarNotificacionAutor('Test Fallido: La operacion no produjo el resultado esperado');
   }
