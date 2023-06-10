@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 let square = function(number) {
   return number * number;
 };
