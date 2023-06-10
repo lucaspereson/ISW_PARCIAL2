@@ -4,7 +4,7 @@ let square = function(number) {
 
 function guardarNumero() {
   var numero = document.getElementById("numeroInput").value;
-  document.getElementById("resultado").textContent = "Número al cuadrado: " + square(numero);
+  document.getElementById("resultado").innerHTML = "Número al cuadrado: " + square(numero);
 };
 
 module.exports = {
