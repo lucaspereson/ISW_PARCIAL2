@@ -1,5 +1,10 @@
 console.log("Hola mundo");
 
-function square(number) {
+let square = function(number) {
     return number *number;
   }
+
+module.exports = {
+    square
+}
+ 
