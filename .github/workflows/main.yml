@@ -17,8 +17,7 @@ jobs:
          node-version: 16.18 
               
       - name: Run tests
-        run:  npm install jest
-              npx jest
+        run:  npx jest
   
       - name: Build 
         run:  npm install
