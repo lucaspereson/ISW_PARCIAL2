@@ -1,3 +1,5 @@
+const nodemailer = require('nodemailer');
+
 function enviarNotificacionAutor(error) {
 
   // Configura el transporte de correo electrónico
