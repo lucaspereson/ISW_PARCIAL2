@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport({
     pass: '17pereson22'
   }
 });
-
+ 
 // Función para enviar un correo electrónico al autor
 function enviarNotificacionAutor(error) {
   const mailOptions =  {
