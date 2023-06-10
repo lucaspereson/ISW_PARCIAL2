@@ -5,7 +5,8 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: { 
     user: 'lucaspereson17@gmail.com',
-    pass: '17pereson22'
+    pass: 'trdxjoahmlrwzqxi'
+
   }
 });
  
@@ -30,7 +31,7 @@ function enviarNotificacionAutor(error) {
 const app = require('./dist/app');
 
 test("TEST 1 (3)", () => {
-  if (app.square(8) !== 64 || app.square(3) !== 9 ) {
+  if (app.square(3) !== 9 ) {
     // Envía una notificación por correo electrónico al autor cuando falle el test
     enviarNotificacionAutor('Test Fallido: La operacion no produjo el resultado esperado');
   };
@@ -38,7 +39,7 @@ test("TEST 1 (3)", () => {
 });
 
 test("TEST 2 (8)", () => {
-  if (app.square(8) !== 64 || app.square(3) !== 9 ) {
+  if (app.square(8) !== 64) {
     // Envía una notificación por correo electrónico al autor cuando falle el test
     enviarNotificacionAutor('Test Fallido: La operacion no produjo el resultado esperado');
   };
