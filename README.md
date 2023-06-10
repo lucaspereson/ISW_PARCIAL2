@@ -6,6 +6,13 @@ Repositorio para el parcial 2 de CI/CD
 "deploy": "echo \"Desplegando la aplicación...\""
 
 
+ steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.SERVICE_ID}}
+          api-key: ${{ secrets.RENDER_API_KEY}}
+
 #name: Build on push
 #run-name: ${{ github.actor }} activo el flujo de trabajo
 #on: 
