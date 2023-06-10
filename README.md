@@ -6,12 +6,18 @@ Repositorio para el parcial 2 de CI/CD
 "deploy": "echo \"Desplegando la aplicación...\""
 
 
- steps:
-      - name: Deploy to production
-        uses: johnbeynon/render-deploy-action@v0.0.8
-        with:
-          service-id: ${{ secrets.SERVICE_ID}}
-          api-key: ${{ secrets.RENDER_API_KEY}}
+     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Render CLI
+        run: |
+          curl -fLo render https://render.com/static/render-cli-linux
+          chmod +x render
+          sudo mv render /usr/local/bin/
+
+      - name: Deploy to Render.com
+        run: render deploy -- --name lsp-isw
 
 #name: Build on push
 #run-name: ${{ github.actor }} activo el flujo de trabajo

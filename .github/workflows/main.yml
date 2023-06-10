@@ -36,18 +36,15 @@ jobs:
     name: Deploy
     needs: [Test] #Solo ejecuta despues de que pase el job Test
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.SERVICE_ID}}
+          api-key: ${{ secrets.RENDER_API_KEY}}
+    
 
-      - name: Install Render CLI
-        run: |
-          curl -fLo render https://render.com/static/render-cli-linux
-          chmod +x render
-          sudo mv render /usr/local/bin/
-
-      - name: Deploy to Render.com
-        run: render deploy -- --name lsp-isw
     
    
               
