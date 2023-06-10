@@ -31,15 +31,17 @@ function enviarNotificacionAutor(error) {
 const app = require('./dist/app');
 
 test("TEST 1 (3)", () => {
+  expect(app.square(3)).toBe(9);
   if (app.square(3) !== 9 ) {
     enviarNotificacionAutor('Test 1 Fallido: La operacion no produjo el resultado esperado');
   };
-  expect(app.square(3)).toBe(9);
+  
 });
 
 test("TEST 2 (8)", () => {
+  expect(app.square(8)).toBe(64);
   if (app.square(8) !== 64) {
     enviarNotificacionAutor('Test 2 Fallido: La operacion no produjo el resultado esperado');
   };
-  expect(app.square(8)).toBe(64);
+  
 });
