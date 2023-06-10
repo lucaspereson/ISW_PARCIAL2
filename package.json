@@ -10,7 +10,7 @@
     "transpile": "babel src -d dist"
   },
   "devDependencies": {
-    "jest": "^27.0.6",
+    "jest": "^27.5.1",
     "jest-environment-jsdom": "^29.5.0"
   },
   "dependencies": {
