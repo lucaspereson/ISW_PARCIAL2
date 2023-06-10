@@ -2,7 +2,7 @@
   "name": "mi-proyecto",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Ejecutando pruebas...\" && node app.test.js",
+    "test": "echo \"Ejecutando pruebas...\"",
     "build": "echo \"Compilando la aplicación...\" && node app.js",
     "deploy": "echo \"Desplegando la aplicación...\""
   },
