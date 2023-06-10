@@ -1,4 +1,5 @@
 name: Run tests
+run-name: ${{ github.actor }} activo el flujo de trabajo
 on:
   push:
     paths-ignore:
@@ -19,5 +20,20 @@ jobs:
               npm install --save-dev jest
       - name: Run tests
         run:  npx jest
+  
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - run:  npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: Build
-        run:  npm run build
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID}}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN}}
+        run:  npm install -g bats
+              bats -v
+              npx netlify-cliv deploy --dir=public --prod
