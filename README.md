@@ -28,3 +28,11 @@ Repositorio para el parcial 2 de CI/CD
 #        run:  npm install -g bats
 #              bats -v
 #              npx netlify-cliv deploy --dir=public --prod
+
+
+
+      - name: Deploy
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID}}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN}}
+        run:  npx netlify-cliv deploy --dir=public --prod
