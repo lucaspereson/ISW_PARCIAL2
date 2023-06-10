@@ -26,7 +26,7 @@ function enviarNotificacionAutor(error) {
       console.log('Correo electrónico enviado:', info.response);
     }
   });
-};
+}; 
 
 const app = require('./dist/app');
 
