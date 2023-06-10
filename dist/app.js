@@ -1,5 +1,5 @@
 let square = function(number) {
-    return number * 2;
+    return number * number;
   }
 //document.getElementById("resultado").textContent = "PARCIAL  2 - ISW";
 
