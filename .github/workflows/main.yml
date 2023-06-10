@@ -28,8 +28,7 @@ jobs:
         run:  npx jest
   
       - name: Build 
-        run:  npm install
-              npm install --save-dev jest-environment-jsdom
+        run:  npm install 
               npm install eslint --save-dev
               npm install @babel/cli @babel/preset-env --save-dev
               npm run build
