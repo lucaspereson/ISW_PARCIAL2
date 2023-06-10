@@ -1,4 +1,4 @@
-const nodemailer = require('./nodemailer');
+const nodemailer = require('nodemailer');
 
 // Configura el transporte de correo electrónico
 const transporter = nodemailer.createTransport({
