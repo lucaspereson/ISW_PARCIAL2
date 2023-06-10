@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 
 // Función para enviar un correo electrónico al autor
 function enviarNotificacionAutor(error) {
-  const mailOptions = {
+  const mailOptions =  {
     from: 'lucaspereson17@gmail.com',
     to: 'lucaspereson.alt@gmail.com',
     subject: 'Notificación de error en pruebas unitarias',
