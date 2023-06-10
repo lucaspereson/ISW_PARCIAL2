@@ -14,7 +14,7 @@ app.listen(port, () => {
 
 
 let square = function(number) {
-    return number * 3;
+    return number * 2;
   }
 
 module.exports = {

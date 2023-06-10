@@ -31,7 +31,6 @@ jobs:
         run:  npm install
               npm install eslint --save-dev
               npm install @babel/cli @babel/preset-env --save-dev
-              npm install express
               npm run build
   Deploy:
     name: Deploy
