@@ -21,11 +21,13 @@ jobs:
       - name: Run tests
         run:  npx jest
   
-      - name: Build and deploy
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID}}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN}}
+      - name: Build 
         run:  npm install eslint --save-dev
               npm install @babel/cli @babel/preset-env --save-dev
               npm run build
-              npx netlify-cliv deploy --dir=public --prod
+
+      - name: Deploy
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID}}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN}}
+        run:  npx netlify-cliv deploy --dir=public --prod
