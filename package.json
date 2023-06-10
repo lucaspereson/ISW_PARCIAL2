@@ -1,10 +1,9 @@
 {
   "name": "mi-proyecto",
   "version": "1.0.0",
+  "main": "app.js",
   "scripts": {
-    "test": "jest",
-    "build": "echo \"Compilando la aplicación...\" && node app.js",
-    "deploy": "echo \"Desplegando la aplicación...\""
+    "test": "jest"
   },
   "devDependencies": {
     "jest": "^27.0.6"

@@ -1,12 +1,12 @@
 name: Run tests
-run-name: ${{ github.actor }} activo el flujo de trabajo
+# run-name: ${{ github.actor }} activo el flujo de trabajo
 on:
   push:
     paths-ignore:
       - ".github/**"
 jobs:
-  test:
-    name: Test
+  Pipeline:
+    name: Test, Build and Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,7 +23,7 @@ jobs:
   
       - name: Build 
         run:  npm run build
-        
+
       - name: Deploy
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID}}
