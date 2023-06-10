@@ -23,7 +23,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
          node-version: 16.18 
-              
+         
+      - name: feedback
+        run: npm install nodemailer
+       
       - name: Run tests
         run:  npx jest
   
