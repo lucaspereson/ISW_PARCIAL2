@@ -1,7 +1,7 @@
 console.log("Hola mundo");
 
 let square = function(number) {
-    return number *  3;
+    return number *  number;
   }
 
 module.exports = {
