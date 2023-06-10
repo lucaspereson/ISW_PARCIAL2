@@ -22,7 +22,9 @@ jobs:
         run:  npx jest
   
       - name: Build 
-        run:  npm run build
+        run:  npm install eslint --save-dev
+              npm install @babel/cli @babel/preset-env --save-dev
+              npm run build
 
       - name: Deploy
         env:
