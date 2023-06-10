@@ -1,9 +1,9 @@
 const app = require('./dist/app');
 const notif = require('./app.feedback');
 
-test("TEST 1 (3)", () => {
-  if (app.square(3) !== 9 ) {
+test("TEST 1 ", () => {
+  if (app.saludar() !== "Hola, mundo" ) {
     notif.enviarNotificacionAutor('Test 1 Fallido: La operacion no produjo el resultado esperado');
   };
-  expect(app.square(3)).toBe(9);
+  expect(app.saludar()).toBe("Hola, mundo");
 });

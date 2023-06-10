@@ -1,8 +1,7 @@
-let square = function(number) {
-  return number * number;
+let saludar = function() {
+  alert("Hola, mundo");
 };
 
 
-module.exports = {
-    square
-}
+
+window.saludar = saludar;
