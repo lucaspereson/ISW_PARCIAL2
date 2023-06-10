@@ -4,4 +4,4 @@ let saludar = function() {
 
 
 
-window.saludar = saludar;
+module.exports = saludar;
