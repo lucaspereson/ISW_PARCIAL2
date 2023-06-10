@@ -15,7 +15,8 @@ jobs:
         with:
          node-version: 16.18
       - name: Install Dependencies
-        run: npm install
+        run:  npm install
+              npm install --save-dev jest
       - name: Run tests
-        run:  npm test
+        run:  npx jest
               npm run build
