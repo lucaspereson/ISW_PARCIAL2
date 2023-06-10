@@ -1,5 +1,5 @@
 let square = function(number) {
-  return number * 3;
+  return number * 4;
 };
 
 function guardarNumero() {
