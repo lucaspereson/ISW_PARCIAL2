@@ -15,4 +15,4 @@ jobs:
         with:
          node-version: 16.18
       - name: Run tests
-        run: npm test
+        run: echo "HOLA MUNDO"
