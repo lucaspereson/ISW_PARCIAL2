@@ -1,8 +1,13 @@
 let square = function(number) {
-    return number * number;
-  }
-//document.getElementById("resultado").textContent = "PARCIAL  2 - ISW";
+  return number * number;
+};
+
+function guardarNumero() {
+  var numero = document.getElementById("numeroInput").value;
+  document.getElementById("resultado").textContent = "Número al cuadrado: " + square(numero);
+};
 
 module.exports = {
-    square
+    square,
+    guardarNumero
 }
