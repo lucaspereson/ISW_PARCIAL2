@@ -21,16 +21,10 @@ jobs:
       - name: Run tests
         run:  npx jest
   
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - run:  npm run build
-
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build
+      - name: Build 
+        run:  npm run build
+        
+      - name: Deploy
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID}}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN}}
