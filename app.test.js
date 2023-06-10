@@ -1,10 +1,7 @@
 const nodemailer = require('nodemailer');
 
-function enviarNotificacionAutor(error) {
-
-  // Configura el transporte de correo electrónico
+// Configura el transporte de correo electrónico
 const transporter = nodemailer.createTransport({
-  // Configura los detalles del servicio de correo electrónico que deseas utilizar
   service: 'Gmail',
   auth: {
     user: 'lucaspereson17@gmail.com',
@@ -12,7 +9,8 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-  // Configura los detalles del correo electrónico
+// Función para enviar un correo electrónico al autor
+function enviarNotificacionAutor(error) {
   const mailOptions = {
     from: 'lucaspereson17@gmail.com',
     to: 'lucaspereson.alt@gmail.com',
@@ -20,10 +18,9 @@ const transporter = nodemailer.createTransport({
     text: `Se encontró un error en las pruebas unitarias:\n\n${error}`
   };
 
-  // Envía el correo electrónico
   transporter.sendMail(mailOptions, function(error, info) {
     if (error) {
-      console.log('Error al enviar el correo electrónico:', error);
+      console.error('Error al enviar el correo electrónico:', error);
     } else {
       console.log('Correo electrónico enviado:', info.response);
     }

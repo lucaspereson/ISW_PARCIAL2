@@ -8,8 +8,6 @@ function guardarNumero() {
 };
 
 
-
-
 module.exports = {
     square,
     guardarNumero

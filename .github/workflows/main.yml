@@ -25,7 +25,8 @@ jobs:
          node-version: 16.18 
          
       - name: Run tests
-        run:  npx jest
+        run:  npm install nodemailer --save
+              npx jest
   
       - name: Build 
         run:  npm install 
