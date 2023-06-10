@@ -1,14 +1,12 @@
 {
-    "name": "github-actions-video",
-    "version": "1.0.0",
-    "description": "",
-    "scripts": {
-      "test": "ava"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-      "ava": "^5.1.0"
-    }
+  "name": "mi-proyecto",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Ejecutando pruebas...\"",
+    "build": "echo \"Compilando la aplicación...\" && node app.js",
+    "deploy": "echo \"Desplegando la aplicación...\""
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
   }
+}
