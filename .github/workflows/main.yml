@@ -18,5 +18,7 @@ jobs:
         run:  npm install
               npm install --save-dev jest
       - name: Run tests
-        run:  npx jest
-              npm run build
+        run:  npm test
+        #npx jest
+      - name: Build
+        run: npm run build
