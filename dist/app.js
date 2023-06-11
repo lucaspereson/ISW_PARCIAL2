@@ -15,9 +15,9 @@ const document = dom.window.document;
 
 // Aquí puedes utilizar el objeto `document` para manipular el DOM
 const resultadoElemento1 = document.getElementById("resultado1");
-resultadoElemento1.innerHTML = '3^2 = ' + square(3);
+resultadoElemento1.innerHTML = '3^2 = ' + cuadrado(3);
 const resultadoElemento2 = document.getElementById("resultado2");
-resultadoElemento2.innerHTML = '8^2 = ' + square(8);
+resultadoElemento2.innerHTML = '8^2 = ' + cuadrado(8);
 
 
 
