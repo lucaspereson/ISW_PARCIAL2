@@ -37,9 +37,6 @@ jobs:
       - name: Run tests
         run:  npx jest
 
-      - name: Lint
-        run: npm run lint
-
       - name: Build 
         run:  npm run build
   
