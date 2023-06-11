@@ -31,11 +31,14 @@ jobs:
               npm install --save-dev jest # Test
               npm install nodemailer --save #Feedback
               npm ci # Build
-              npm install eslint --save-dev
+              npm install eslint eslint-plugin-react @babel/core @babel/preset-env --save-dev
 
       - name: Run tests
         run:  npx jest
-  
+
+      - name: Lint
+        run: npm run eslint
+
       - name: Build 
         run:  npm run build
   
