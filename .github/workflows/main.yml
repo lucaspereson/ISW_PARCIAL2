@@ -37,6 +37,21 @@ jobs:
               npm install eslint --save-dev
               npm install @babel/cli @babel/preset-env --save-dev
               npm run build
+  
+  sonarcloud:
+    name: SonarCloud
+    needs: [Test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
   Deploy:
     name: Deploy
     needs: [Test] #Solo ejecuta despues de que pase el job Test
