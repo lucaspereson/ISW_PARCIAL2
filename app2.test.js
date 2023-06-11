@@ -1,7 +1,5 @@
 const app = require('./dist/app');
 const notif = require('./app.feedback');
-import {expect, test} from '@jest/globals';
-
 
 test("TEST 2 (8)", () => {
   //if (app.square(8) !== 64 ) {
