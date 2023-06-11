@@ -1,4 +1,4 @@
-const app = require('./dist/app');
+const app = require('./src/app');
 const notif = require('./app.feedback');
 
 test("TEST 2 (8)", () => {

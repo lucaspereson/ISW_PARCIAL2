@@ -1,11 +1,11 @@
 {
   "name": "lsp-isw",
   "version": "1.0.0",
-  "main": "dist/app.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node dist/app.js",
+    "start": "node src/app.js",
     "test": "jest",
-    "build": "npm run lint",
+    "build": "webpack --mode production",
     "lint": "eslint ."
   },
   "devDependencies": {
