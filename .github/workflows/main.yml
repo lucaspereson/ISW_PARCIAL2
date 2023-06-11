@@ -31,13 +31,16 @@ jobs:
               npm install --save-dev jest # Test
               npm install nodemailer --save #Feedback
               npm ci # Build
-              npm install typescript --save-dev
+              npm install 
 
       - name: Run tests
         run:  npx jest
   
       - name: Build 
         run:  npm run build
+
+      - name: Lint
+        run: npm run eslint
   
   sonarcloud:
     name: SonarCloud
