@@ -5,5 +5,6 @@ test("TEST 2 (8)", () => {
   //if (app.square(8) !== 64 ) {
   //  notif.enviarNotificacionAutor('Test 2 Fallido: La operacion no produjo el resultado esperado');
   //};
-  expect(app.square(8)).toBe(64);
+  const valor = app.cuadrado(8);
+  expect(valor).toBe(64);
 });

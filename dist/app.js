@@ -1,9 +1,9 @@
-function square(number) {
+function cuadrado(number) {
   return number * 2;
 };
 
 module.exports = {
-    square
+  cuadrado
 }
 
 const { JSDOM } = require('jsdom');
