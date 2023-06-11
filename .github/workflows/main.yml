@@ -55,7 +55,8 @@ jobs:
     name: Deploy
     needs: [Test, sonarcloud] 
     runs-on: ubuntu-latest
-    
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' 
+    # el job de deploy solo se ejecuta cuando el evento sea un push en la rama "main" y no se ejecute para las pull requests.
     steps:
       - name: Deploy to production
         uses: johnbeynon/render-deploy-action@v0.0.8
