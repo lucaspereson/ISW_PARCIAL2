@@ -10,6 +10,7 @@
     "transpile": "babel src -d dist"
   },
   "devDependencies": {
+    "eslint": "^8.42.0",
     "jest": "^27.5.1",
     "jest-environment-jsdom": "^29.5.0"
   },
