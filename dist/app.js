@@ -1,4 +1,4 @@
-let square = function(number) {
+function square(number) {
   return number * 2;
 };
 
