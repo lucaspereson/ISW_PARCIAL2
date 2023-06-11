@@ -19,14 +19,7 @@ function enviarNotificacionAutor(error) {
     text: `Se encontró un error en las pruebas unitarias:\n\n${error}`
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error('Error al enviar el correo electrónico:', error);
-    } else {
-      console.log('Correo electrónico enviado:');
-      console.log('Correo electrónico enviado:', info.response);
-    }
-  });
+  transporter.sendMail(mailOptions, (error, info) => { });
 };
 
 module.exports = {
