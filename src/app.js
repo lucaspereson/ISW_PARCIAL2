@@ -2,7 +2,7 @@ function cuadrado(number) {
   return number * number;
 };
 
-function cuadrado(number) {
+function cuadrado2(number) {
   return number * number;
 };
 
