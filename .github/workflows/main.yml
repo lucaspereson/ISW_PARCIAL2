@@ -68,4 +68,4 @@ jobs:
           api-key: ${{ secrets.RENDER_API_KEY}}
       
       - name: Notificacion de deploy
-        run: node -e "require('./app.feedback').enviarNotificacionAutor('Notificación de comienzo de despliegue', `Se comenzo con el despliegue del ultimo push correcto en Render.com`)
+        run: node -e "require('./app.feedback.js').enviarNotificacionAutor('Notificación de comienzo de despliegue', `Se comenzo con el despliegue del ultimo push correcto en Render.com`)"
