@@ -29,9 +29,6 @@ jobs:
         run:  | 
               npm install --save-dev jest # Test
               npm install nodemailer --save #Feedback
-              npm ci # Build
-              npm install eslint eslint-plugin-react --save-dev
-              npm install @babel/cli @babel/core @babel/preset-env --save-dev
               
       - name: Run tests
         run:  npx jest
@@ -59,6 +56,12 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' 
     # el job de deploy solo se ejecuta cuando el evento sea un push en la rama "main" y no se ejecute para las pull requests.
     steps:
+      - name: Install dependencies Build
+        run:  | 
+              npm ci # Build
+              npm install eslint eslint-plugin-react --save-dev
+              npm install @babel/cli @babel/core @babel/preset-env --save-dev
+
       - name: Deploy to production
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:
