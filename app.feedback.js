@@ -17,17 +17,16 @@ const transporter = nodemailer.createTransport({
   auth: { 
     user: 'lucaspereson17@gmail.com',
     pass: 'trdxjoahmlrwzqxi'
-
   }
 });
  
 // Función para enviar un correo electrónico al autor
-function enviarNotificacionAutor(error) {
+function enviarNotificacionAutor(subj, txt) {
   const mailOptions =  {
     from: 'lucaspereson17@gmail.com',
     to: obtenerEmailAutorCommit(),
-    subject: 'Notificación de error en pruebas unitarias',
-    text: `Se encontró un error en las pruebas unitarias:\n\n${error}`
+    subject: subj,
+    text: txt
   };
 
   transporter.sendMail(mailOptions, (error, info) => { });
