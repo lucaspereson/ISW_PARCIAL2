@@ -1,5 +1,5 @@
 function cuadrado(number) {
-  return number * h;
+  return number *h;
 };
 
 module.exports = {
