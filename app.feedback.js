@@ -1,4 +1,15 @@
+const { execSync } = require('child_process');
 const nodemailer = require('nodemailer');
+
+function obtenerEmailAutorCommit() {
+  try {
+    const email = execSync('git log --format="%ae" -n 1').toString().trim();
+    return email;
+  } catch (error) {
+    console.error('Error al obtener el email del autor del commit:', error);
+    return null;
+  }
+}
 
 // Configura el transporte de correo electrónico
 const transporter = nodemailer.createTransport({
@@ -14,7 +25,7 @@ const transporter = nodemailer.createTransport({
 function enviarNotificacionAutor(error) {
   const mailOptions =  {
     from: 'lucaspereson17@gmail.com',
-    to: 'lucaspereson.alt@gmail.com',
+    to: obtenerEmailAutorCommit(),
     subject: 'Notificación de error en pruebas unitarias',
     text: `Se encontró un error en las pruebas unitarias:\n\n${error}`
   };
