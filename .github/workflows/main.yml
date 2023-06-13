@@ -75,12 +75,26 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' 
     # el job de deploy solo se ejecuta cuando el evento sea un push en la rama "main" y no se ejecute para las pull requests.
     steps:
-      - name: Deploy to production
-        uses: johnbeynon/render-deploy-action@v0.0.8
-        with:
-          service-id: ${{ secrets.SERVICE_ID}}
-          api-key: ${{ secrets.RENDER_API_KEY}}
+      #- name: Deploy to production
+      #  uses: johnbeynon/render-deploy-action@v0.0.8
+      #  with:
+      #    service-id: ${{ secrets.SERVICE_ID}}
+      #    api-key: ${{ secrets.RENDER_API_KEY}}
 
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Render
+        env:
+          SERVICE_ID: ${{ secrets.SERVICE_ID }}
+          API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          curl -H "Authorization: Bearer $API_KEY" \
+            -d "deployment[branch]=main" \
+            -d "deployment[environment]=production" \
+            -d "deployment[revision]=${GITHUB_SHA}" \
+            https://api.render.com/v1/services/${SERVICE_ID}/deployments
+      
       #NotificacionDeploySlack:
       - name: Envio de notificacion Slack - Deploy
         uses: 8398a7/action-slack@v3
