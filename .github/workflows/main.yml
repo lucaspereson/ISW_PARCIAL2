@@ -39,6 +39,21 @@ jobs:
       #- name: Build 
       #  run:  npm run build
   
+      #NotificacionTestSlack:
+      - name: Envio de notificacion Slack - Test
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: #canal-de-difusion-repositorio
+        if: ${{ failure() }}
+        with:
+          status: ${{ job.status }}
+          message: |
+            ¡Atención! Los tests fallaron. Commit no fusionado en el repositorio.
+            Autor: ${{ github.actor }}
+            Commit: ${{ github.sha }}
+            Mensaje: ${{ github.event.head_commit.message }}
+
   sonarcloud:
     name: SonarCloud
     needs: [Test]
@@ -64,6 +79,17 @@ jobs:
         with:
           service-id: ${{ secrets.SERVICE_ID}}
           api-key: ${{ secrets.RENDER_API_KEY}}
-      
-      #- name: Notificacion de deploy
-      #  run:  node -e "require('../app.feedback.js').enviarNotificacionAutor('Notificación de comienzo de despliegue', 'Se comenzo con el despliegue del ultimo push correcto en Render.com')"
+
+      #NotificacionDeploySlack:
+      - name: Envio de notificacion Slack - Deploy
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: #canal-de-difusion-repositorio
+        with:
+          status: ${{ job.status }}
+          message: |
+                    Se ha realizado un push en el repositorio, y se ha desplegado una nueva version.
+                    Autor: ${{ github.actor }}
+                    Commit: ${{ github.sha }}
+                    Mensaje: ${{ github.event.head_commit.message }}
