@@ -82,14 +82,15 @@ jobs:
 
       #NotificacionDeploySlack:
       - name: Envio de notificacion Slack - Deploy
-        uses: rtCamp/action-slack-notify@v2
+        uses: 8398a7/action-slack@v3
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: #canal-de-difusion-repositorio
         with:
-          entryPoint: send-message
-          args: |
-                  -m "Se ha realizado un push en el repositorio, y se ha desplegado una nueva version."
-                  -m "Autor: ${{ github.actor }}"
-                  -m "Commit: ${{ github.sha }}"
-                  -m "Mensaje: ${{ github.event.head_commit.message }}"
+          status: ${{ job.status }}
+          text: |
+                  Se ha realizado un push en el repositorio, y se ha desplegado una nueva version.
+                  Autor: ${{ github.actor }}
+                  Commit: ${{ github.sha }}
+                  Mensaje: ${{ github.event.head_commit.message }}
+          channel: #canal-de-difusion-repositorio
