@@ -73,13 +73,19 @@ jobs:
     needs: [Test] 
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' 
-    # el job de deploy solo se ejecuta cuando el evento sea un push en la rama "main" y no se ejecute para las pull requests.
+    
     steps:
       #- name: Deploy to production
       #  uses: johnbeynon/render-deploy-action@v0.0.8
       #  with:
       #    service-id: ${{ secrets.SERVICE_ID}}
       #    api-key: ${{ secrets.RENDER_API_KEY}}
+
+      - name: Install dependencies
+        run:  npm install
+              npm ci 
+              npm install eslint eslint-plugin-react --save-dev
+              npm install @babel/cli @babel/core @babel/preset-env --save-dev
 
       - name: Build
         run: npm run build
