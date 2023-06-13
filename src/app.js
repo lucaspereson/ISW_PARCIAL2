@@ -9,10 +9,3 @@ module.exports = {
   cuadrado,
   cuadrado2
 }
-
-
-const myFunction = function() {
-  // Hacer algo...
-};
-
-
