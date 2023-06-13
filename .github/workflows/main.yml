@@ -41,7 +41,7 @@ jobs:
   
       #NotificacionTestSlack:
       - name: Envio de notificacion Slack - Test
-        uses: rtCamp/action-slack-notify@v2
+        uses: 8398a7/action-slack@v3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         if: ${{ failure() }}
