@@ -3,6 +3,5 @@ function cuadrado(number) {
 }
 
 module.exports = {
-  cuadrado,
-  cuadrado2
+  cuadrado
 }
