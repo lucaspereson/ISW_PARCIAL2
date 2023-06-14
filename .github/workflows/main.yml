@@ -34,7 +34,7 @@ jobs:
       - name: Run compilation
         run:  npm run build
               mkdir dist
-              cp -R ./src/* ./dist
+              cp -R ../src/* ../dist
         
       #NotificacionTestSlack:
       - name: Envio de notificacion Slack - Compilacion Fallida
