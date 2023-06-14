@@ -13,8 +13,8 @@ on:
       - ".github/**"
 
 jobs:
-  Compilation:
-    name: Compilation
+  Build:
+    name: Build
     runs-on: ubuntu-latest 
     steps:    
       - name: Checkout
@@ -48,19 +48,7 @@ jobs:
                 Mensaje: ${{ github.event.head_commit.message }}
           channel: #canal-de-difusion-repositorio
       
-  Tests:
-    name: Tests
-    runs-on: ubuntu-latest 
-    needs: [Compilation]
-    steps:    
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.18 
-      
-      - name: Install dependencies
+      - name: Install dependencies2
         run: npm install --save-dev jest
 
       - name: Run tests
@@ -83,7 +71,7 @@ jobs:
 
   sonarcloud:
     name: SonarCloud
-    needs: [Compilation]
+    needs: [Build]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -97,7 +85,7 @@ jobs:
 
   Deploy:
     name: Deploy
-    needs: [Tests] 
+    needs: [Build] 
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' 
     
