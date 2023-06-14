@@ -1,4 +1,4 @@
-name: Test, Build and Deploy
+name: Build
 # run-name: ${{ github.actor }} activo el flujo de trabajo
 on:
   push:
@@ -13,22 +13,41 @@ on:
       - ".github/**"
 
 jobs:
-  Test:
-    name: Test
+  Compilation:
+    name: Compilation and Test
     runs-on: ubuntu-latest 
-    # if: github.event_name == 'pull_request' && github.ref == 'refs/heads/main' 
-    steps:
+    steps:    
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-         node-version: 16.18 
-         
-      - name: Install dependencies
-        run:  npm install --save-dev jest
+          node-version: 16.18 
       
-      #Test
+      - name: Install dependencies
+        run:  npm install
+              npm ci 
+              npm install eslint eslint-plugin-react --save-dev
+              npm install @babel/cli @babel/core @babel/preset-env --save-dev
+
+      - name: Run compilation
+        run: npm run build
+      
+  Tests:
+    name: Compilation and Test
+    runs-on: ubuntu-latest 
+    needs: [Compilation]
+    steps:    
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.18 
+      
+      - name: Install dependencies
+        run: npm install --save-dev jest
+
       - name: Run tests
         run:  npx jest
   
@@ -49,7 +68,7 @@ jobs:
 
   sonarcloud:
     name: SonarCloud
-    needs: [Test]
+    needs: [Compilation]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -62,28 +81,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   Deploy:
-    name: Build and Deploy
-    needs: [Test] 
+    name: Deploy
+    needs: [Tests] 
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' 
     
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.18 
-      
-      - name: Install dependencies
-        run:  npm install
-              npm ci 
-              npm install eslint eslint-plugin-react --save-dev
-              npm install @babel/cli @babel/core @babel/preset-env --save-dev
-
-      - name: Build
-        run: npm run build
-
       - name: Deploy to production
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:
