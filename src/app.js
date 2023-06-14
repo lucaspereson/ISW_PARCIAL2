@@ -2,11 +2,11 @@ function cuadrado(number) {
   return number * number;
 } 
 
-var x =1;
-var y =x;
-var z =y;
-var x=z;
-var y=z;
+let x =1;
+let y =x;
+let z =y;
+x=z;
+y=z;
 
 module.exports = {
   cuadrado
