@@ -35,7 +35,7 @@ jobs:
         run:  npm run build
       
       - name: Move build to dist directory
-        run: mv ../src ../dist
+        run: mv $GITHUB_WORKSPACE/src $GITHUB_WORKSPACE/dist
         
       #NotificacionTestSlack:
       - name: Envio de notificacion Slack - Compilacion Fallida
