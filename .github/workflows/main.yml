@@ -59,7 +59,7 @@ jobs:
         uses: 8398a7/action-slack@v3
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-        if: ${{ needs.Build.outputs.tests.result == 'failure'}}
+        if: ${{ failure() && needs.Build.outputs.tests.result == 'failure'}}
         with:
           status: ${{ job.status }}
           text: |
