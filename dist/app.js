@@ -4,7 +4,7 @@ function cuadrado(number) {
 let x = 1;
 let y = x;
 let z = y;
-x = z; 
+x = z;  
 y = z;
 var uno = 2;
 var dos = uno;
