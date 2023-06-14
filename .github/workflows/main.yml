@@ -59,11 +59,11 @@ jobs:
         uses: 8398a7/action-slack@v3
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-        if: ${{ failure() && needs.Build.outputs.tests.result == 'failure'}}
+        if: ${{ failure() }}
         with:
           status: ${{ job.status }}
           text: |
-                ¡Atención! Los tests fallaron. Commit no fusionado en el repositorio.
+                ¡Atención! Los tests fallaron o no pudieron realizarse. Commit no fusionado en el repositorio.
                 Autor: ${{ github.actor }}
                 Commit: ${{ github.sha }}
                 Mensaje: ${{ github.event.head_commit.message }}
