@@ -109,7 +109,7 @@ jobs:
           api-key: ${{ secrets.RENDER_API_KEY}}
       
       #NotificacionDeploySlack:
-      - name: Envio de notificacion Slack - Deploy
+      - name: Envio de notificacion Slack - Despliegue comenzado
         uses: 8398a7/action-slack@v3
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
@@ -117,7 +117,21 @@ jobs:
         with:
           status: ${{ job.status }}
           text: |
-                  Se ha realizado un push en el repositorio, y se ha desplegado una nueva version.
+                  Se ha realizado un push en el repositorio. Comenzó un nuevo despliegue en el entorno.
+                  Autor: ${{ github.actor }}
+                  Commit: ${{ github.sha }}
+                  Mensaje: ${{ github.event.head_commit.message }}
+          channel: #canal-de-difusion-repositorio
+
+      - name: Envio de notificacion Slack - Despliegue fallido
+        uses: 8398a7/action-slack@v3
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        if: ${{ failure() }}
+        with:
+          status: ${{ job.status }}
+          text: |
+                  ¡Atención! El despliegue en el entorno falló.
                   Autor: ${{ github.actor }}
                   Commit: ${{ github.sha }}
                   Mensaje: ${{ github.event.head_commit.message }}
