@@ -1,5 +1,5 @@
 function cuadrado(number) {
-  return number * number;
+  return number * 2;
 } 
   
 let x =1;
