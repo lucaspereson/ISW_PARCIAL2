@@ -14,7 +14,7 @@ on:
 
 jobs:
   Compilation:
-    name: Compilation and Test
+    name: Compilation
     runs-on: ubuntu-latest 
     steps:    
       - name: Checkout
@@ -32,9 +32,24 @@ jobs:
 
       - name: Run compilation
         run: npm run build
+        
+      #NotificacionTestSlack:
+      - name: Envio de notificacion Slack - Compilacion Fallida
+        uses: 8398a7/action-slack@v3
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        if: ${{ failure() }}
+        with:
+          status: ${{ job.status }}
+          text: |
+                ¡Atención! La compilacion falló. Commit no fusionado en el repositorio.
+                Autor: ${{ github.actor }}
+                Commit: ${{ github.sha }}
+                Mensaje: ${{ github.event.head_commit.message }}
+          channel: #canal-de-difusion-repositorio
       
   Tests:
-    name: Compilation and Test
+    name: Tests
     runs-on: ubuntu-latest 
     needs: [Compilation]
     steps:    
@@ -52,7 +67,7 @@ jobs:
         run:  npx jest
   
       #NotificacionTestSlack:
-      - name: Envio de notificacion Slack - Test
+      - name: Envio de notificacion Slack - Tests Fallidos
         uses: 8398a7/action-slack@v3
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
