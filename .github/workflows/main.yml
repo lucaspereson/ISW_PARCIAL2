@@ -33,9 +33,6 @@ jobs:
 
       - name: Run compilation
         run:  npm run build
-      
-      - name: Move build to dist directory
-        run: mv $GITHUB_WORKSPACE/src $GITHUB_WORKSPACE/dist
         
       #NotificacionTestSlack:
       - name: Envio de notificacion Slack - Compilacion Fallida
@@ -53,7 +50,6 @@ jobs:
           channel: #canal-de-difusion-repositorio
       
       - name: Run tests
-        id: tests
         if: ${{ !failure() }}
         run:  npx jest
   
@@ -91,7 +87,6 @@ jobs:
     needs: [Build] 
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' 
-    
     steps:
       - name: Deploy to production
         uses: johnbeynon/render-deploy-action@v0.0.8
