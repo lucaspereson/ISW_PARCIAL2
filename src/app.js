@@ -1,6 +1,6 @@
 function cuadrado(number) {
   return number * number;
-}  
+}   
 // funcion h es 3
  
 let x =1;
