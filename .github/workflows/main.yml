@@ -103,7 +103,7 @@ jobs:
         with:
           status: ${{ job.status }}
           text: |
-                  Se ha realizado un push en el repositorio. Comenzó un nuevo despliegue en el entorno de review.
+                  Se ha realizado un push en el repositorio. Comenzó un nuevo despliegue en el entorno de desarrollo.
                   Autor: ${{ github.actor }}
                   Commit: ${{ github.sha }}
                   Mensaje: ${{ github.event.head_commit.message }}
